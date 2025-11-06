@@ -1,28 +1,52 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero from './components/Hero';
+import About from './components/About';
+import Services from './components/Services';
+import BookSection from './components/BookSection';
+import Contact from './components/Contact';
 
-function App() {
-  const [count, setCount] = useState(0)
+const Header = () => (
+  <header className="fixed top-0 inset-x-0 z-20 backdrop-blur bg-white/60 border-b border-slate-200/60">
+    <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" className="text-slate-900 font-semibold">Dr. Seth Meyers</a>
+      <nav className="hidden md:flex items-center gap-6 text-sm text-slate-700">
+        <a href="#about" className="hover:text-blue-600">About</a>
+        <a href="#services" className="hover:text-blue-600">Services</a>
+        <a href="#book" className="hover:text-blue-600">Book</a>
+        <a href="#contact" className="hover:text-blue-600">Contact</a>
+        <a href="mailto:appointments@drsethmeyers.com" className="rounded-md bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 font-medium">Book Now</a>
+      </nav>
+    </div>
+  </header>
+);
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
+const Footer = () => (
+  <footer className="border-t border-slate-200 bg-white">
+    <div className="container mx-auto px-6 py-10 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>© {new Date().getFullYear()} Dr. Seth Meyers. All rights reserved.</div>
+      <div className="flex items-center gap-4">
+        <a href="#contact" className="hover:text-blue-600">Contact</a>
+        <a href="#services" className="hover:text-blue-600">Services</a>
+        <a href="#about" className="hover:text-blue-600">About</a>
       </div>
     </div>
-  )
+  </footer>
+);
+
+function App() {
+  return (
+    <div className="min-h-screen bg-white text-slate-900">
+      <Header />
+      <main className="pt-16">
+        <Hero />
+        <About />
+        <Services />
+        <BookSection />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
